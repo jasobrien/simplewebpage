@@ -38,6 +38,11 @@
             padding: 10px;
             font-size: 0.9em;
         }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -74,6 +79,8 @@
                         <input type="password" id="password" class="form-control me-2" placeholder="Password" required>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
+                    <!-- Error Message -->
+                    <span id="errorMessage" class="error-message ms-3">Incorrect username or password</span>
                     <!-- Greeting and Logout Button -->
                     <div id="userGreeting" class="d-none align-items-center">
                         <span id="welcomeMessage" class="me-3"></span>
@@ -95,7 +102,7 @@
         <!-- Story 1: Park Renovation -->
         <div class="row story mb-4">
             <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1564254085316-cf9531e402cc" alt="City Park Renovation">
+                <img src="https://media.istockphoto.com/id/1197559893/photo/aerial-view-of-little-park-in-suburban-packed-homes-neighborhood-with-road.webp?a=1&b=1&s=612x612&w=0&k=20&c=AXhfz5rzAa_z74tNpUKOHbdkBRNeWHwYoHJJfmtejyI=" alt="City Park Renovation">
             </div>
             <div class="col-md-8">
                 <h2>City Park Undergoes Major Renovation</h2>
@@ -106,7 +113,7 @@
         <!-- Story 2: Local Theater Hosts 'Hamlet' -->
         <div class="row story mb-4">
             <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1542038784456-51fd31ee3c70" alt="Community Theater Hamlet">
+                <img src="https://media.istockphoto.com/id/1220793403/photo/theater-stage-with-red-velvet-curtains-and-spotlights.webp?a=1&b=1&s=612x612&w=0&k=20&c=4PncSbQ7Nl1wkjGlmXrMmnX-3ee-U4LMZqEw7J8Yr0U=" alt="Community Theater Hamlet">
             </div>
             <div class="col-md-8">
                 <h2>Local Theater Hosts Shakespeare’s 'Hamlet'</h2>
@@ -128,7 +135,7 @@
         <!-- Story 4: School Coding Program -->
         <div class="row story mb-4">
             <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1596495577886-d920f9548b51" alt="School Coding Program">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29kaW5nfGVufDB8fDB8fHww" alt="School Coding Program">
             </div>
             <div class="col-md-8">
                 <h2>Local High School Introduces Coding Program</h2>
@@ -143,4 +150,37 @@
     </div>
 
     <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Login and Logout -->
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("errorMessage");
+
+            if (username === "test" && password === "test") {
+                // Hide login form and show greeting
+                document.getElementById("loginForm").classList.add("d-none");
+                document.getElementById("userGreeting").classList.remove("d-none");
+                document.getElementById("welcomeMessage").textContent = `Welcome, ${username} user!`;
+                errorMessage.style.display = "none";
+            } else {
+                errorMessage.style.display = "inline";
+            }
+        }
+
+        function handleLogout() {
+            // Show login form and hide greeting
+            document.getElementById("loginForm").classList.remove("d-none");
+            document.getElementById("userGreeting").classList.add("d-none");
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("errorMessage").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
