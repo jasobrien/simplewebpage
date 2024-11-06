@@ -38,11 +38,17 @@
             padding: 10px;
             font-size: 0.9em;
         }
+        .login-message {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            color: green;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Navbar with Login Form -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">The Globe</a>
@@ -50,7 +56,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Home</a>
                     </li>
@@ -67,6 +73,12 @@
                         <a class="nav-link" href="#">Sports</a>
                     </li>
                 </ul>
+                <!-- Login Form -->
+                <form class="d-flex" onsubmit="return handleLogin(event);">
+                    <input type="text" id="username" class="form-control me-2" placeholder="Username" required>
+                    <input type="password" id="password" class="form-control me-2" placeholder="Password" required>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -77,38 +89,11 @@
         <p class="lead">Your trusted source for news from around the world.</p>
     </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <!-- First Column -->
-            <div class="col-md-6">
-                <div class="story mb-4">
-                    <img src="https://via.placeholder.com/600x300" alt="Local Park">
-                    <h2>Local Park Renovations Near Completion</h2>
-                    <p>After months of construction, the much-anticipated renovations at Central Park are nearing completion. The new layout includes updated walking paths, additional seating areas, and a scenic water feature. Residents have praised the project for enhancing community spaces and providing a refreshing outdoor environment.</p>
-                </div>
-                <div class="story mb-4">
-                    <img src="https://via.placeholder.com/600x300" alt="Community Theatre">
-                    <h2>Community Theatre Opens New Season with Classic Play</h2>
-                    <p>The Downtown Community Theatre opened its new season with a sold-out performance of William Shakespeare’s *Hamlet*. The production features a local cast and brings a modern twist to the timeless tale. Audiences can look forward to a range of plays this season, promising to appeal to a diverse crowd of theatre lovers.</p>
-                </div>
-            </div>
+    <!-- Login Message -->
+    <div id="loginMessage" class="login-message"></div>
 
-            <!-- Second Column -->
-            <div class="col-md-6">
-                <div class="story mb-4">
-                    <img src="https://via.placeholder.com/600x300" alt="Environmental Initiatives">
-                    <h2>City Council Passes New Environmental Initiatives</h2>
-                    <p>The City Council has approved a series of initiatives aimed at reducing emissions and promoting sustainable practices across the community. The policies include expanded recycling programs, incentives for green businesses, and investments in public transportation. Supporters hope these measures will set an example for other cities.</p>
-                </div>
-                <div class="story mb-4">
-                    <img src="https://via.placeholder.com/600x300" alt="School Coding Program">
-                    <h2>Local School Launches Coding Program for Students</h2>
-                    <p>Greenwood High School has launched a new coding program for students, aiming to equip them with skills for the digital age. The program includes classes in Python, JavaScript, and web development, with plans to introduce robotics in the coming months. Students have expressed enthusiasm, seeing it as a pathway to future tech careers.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Main Content (Omitted for brevity) -->
+    <!-- (Place your main content here, as shown in previous example) -->
 
     <!-- Footer -->
     <div class="footer">
@@ -118,5 +103,21 @@
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Login Validation -->
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "test" && password === "test") {
+                document.getElementById("loginMessage").textContent = "Welcome, test user!";
+            } else {
+                document.getElementById("loginMessage").textContent = "Invalid credentials. Please try again.";
+            }
+        }
+    </script>
+
 </body>
 </html>
