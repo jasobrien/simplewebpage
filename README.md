@@ -1,2 +1,3 @@
 # simplewebpage
-test webpage
+creates a simple webpage that is deployed to pages with github actions
+
